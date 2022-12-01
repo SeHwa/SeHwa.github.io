@@ -1,1 +1,0 @@
-# sehwa.github.io

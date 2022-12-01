@@ -1,0 +1,8 @@
+- title: MSX
+  url: category/msx.html
+  icon: assets/img/icons/msx.svg
+  hue: "var(--c-themeHueMSX)"
+- title: 한글화
+  url: category/hangul.html
+  icon: assets/img/icons/hangul.svg
+  hue: "var(--c-themeHueGreen)"

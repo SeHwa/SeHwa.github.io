@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<section class="feed">
+    <section class="feed__description">
+        {% if page.title != nil %}
+            <h1>{{ page.title }}</h1>
+        {% endif %}
+    </section>
+     
+    {% for post in site.posts %}
+    <section class="snippet snippet_{{ post.id | slugify: "ascii" }}">
+            {% for category in post.category %}
+                {% if page.category contains category %}
+                    {% include snippet.html post=post %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+    </section>
+    {% endfor %}
+</section>

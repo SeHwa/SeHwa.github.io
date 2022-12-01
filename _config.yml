@@ -1,0 +1,26 @@
+title: 1bppHacker
+logo_img: /assets/img/icons/logo.gif
+favicon: /assets/img/icons/favicon.png
+description: 1bppHacker
+copyright: © SeHwa 2022
+
+sass:
+    style: compressed
+
+collections:
+    category:
+        output: true
+    authors:
+        output: false
+
+analytics:
+    google:
+        tracking_id: "G-WLBPP9HKCW"
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"

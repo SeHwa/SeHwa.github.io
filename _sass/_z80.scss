@@ -1,0 +1,17 @@
+.language-z80 {
+    .h_ins { color: #5200FF; }
+    .h_reg { color: #2B9FCB; }
+    .h_int { color: #098658; }
+    .h_prt { color: #5200FF; }
+    .h_cmt { color: #098658; }
+}
+
+@media (prefers-color-scheme: dark){
+    .language-z80 {
+        .h_ins { color: #569CD6; }
+        .h_reg { color: #49C9B0; }
+        .h_int { color: #B5CEA8; }
+        .h_prt { color: #FFD70A; }
+        .h_cmt { color: #4BA64A; }
+    }
+}
