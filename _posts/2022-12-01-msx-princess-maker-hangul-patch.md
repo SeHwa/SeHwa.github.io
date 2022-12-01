@@ -76,7 +76,7 @@ Kanji ROM 은 기본적으로 [Shift-JIS](http://www.rikai.com/library/kanjitabl
 
 <br>
 
-## Analsyis
+## Analysis
 
 사용할 분석 도구는 대략 아래와 같다.
 
