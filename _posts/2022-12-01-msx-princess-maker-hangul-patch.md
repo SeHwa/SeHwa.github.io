@@ -597,22 +597,37 @@ FONT_NEW:
 <a href="/assets/img/posts/1/24.jpg" data-lity>
   <img src="/assets/img/posts/1/24.jpg" style="width:500px" />
 </a>
+<span class="sx-subtitle">8x12 조합형 폰트</span>
 </div>
 </div>
 
-원래 이 게임에서 사용하는 반각 문자 크기는 8x12 이면서 상하 여백이 1라인씩 존재하므로 실제 출력되는 크기는 8x10 이다. 그래서 원래는 8x10 크기의 한글 폰트를 넣어야겠지만 검색해보니 쉽게 나오지 않아서, 어차피 테스트이니만큼 먼저 구글링으로 찾은 [이 블로그](https://blog.naver.com/ascbbs/220454850394)에서 제공하는 8x12 크기의 조합형 폰트를 삽입해보았다. 최종 작업물에는 좀 더 미려한 폰트를 사용해야겠지만 일단 위 이미지와 같이 이름이 한글로 잘 출력되는 것을 확인할 수 있다.
+원래 이 게임에서 사용하는 반각 문자 크기는 8x12 이면서 상하 여백이 1라인씩 존재하므로 실제 출력되는 크기는 8x10 이다. 물론 여백이 없는 8x12 폰트를 넣어도 상관은 없으므로 먼저 구글링으로 찾은 [이 블로그](https://blog.naver.com/ascbbs/220454850394)에서 제공하는 8x12 크기의 조합형 폰트를 삽입해보았다. 위 이미지와 같이 이름이 한글로 잘 출력되는 것을 확인할 수 있다.
 
-추가로 다른 폰트를 하나 더 넣어보기로 하고, 적당한 폰트를 찾다가 [달무리](https://ranolp.github.io/dalmoori-font/) 폰트를 찾아서 이를 적당히 8x10 크기에 최대한 맞게 조정해서 1bpp 데이터로 변환하고 넣어보았다.
+추가로 다른 폰트를 더 넣어보기로 하고, 적당한 폰트를 찾다가 [달무리](https://ranolp.github.io/dalmoori-font/) 폰트를 찾아서 이를 적당히 8x10 크기에 최대한 맞게 조정해서 1bpp 데이터로 변환하고 넣어보았다.
 
 <div markdown=1 class="sx-center">
 <div class="sx-picture">
 <a href="/assets/img/posts/1/25.jpg" data-lity>
   <img src="/assets/img/posts/1/25.jpg" style="width:500px" />
 </a>
+<span class="sx-subtitle">달무리 폰트</span>
 </div>
 </div>
 
-아무래도 트루타입 폰트를 억지로 변환하는 방식으로는 자형이 깔끔하게 나오기 어렵고 8x10 이라는 비율을 맞추면 더욱 이상해져서 가독성이 심히 안 좋지만, 일단 이런 식으로 들어간다는 것을 확인할 수 있다.
+아무래도 트루타입 폰트를 억지로 변환하는 방식으로는 자형이 깔끔하게 나오기 어렵고 8x10 이라는 비율을 맞추면 더욱 이상해져서 가독성이 심히 안 좋지만, 일단 이런 식으로 들어간다는 것을 확인할 수는 있다.
+
+그리고 다른 작업을 위해 폰트를 찾다가, 옛날 16년 전 쯤에 포켓몬스터 한국어화 관련해서 다운받아서 저장해놨던 친9체 폰트를 찾았다. 그림자가 있는 4bpp 폰트 파일이어서 우선 1bpp 로 바꾸고 8x12 크기로 적절히 조정해서 삽입해보았다.
+
+<div markdown=1 class="sx-center">
+<div class="sx-picture">
+<a href="/assets/img/posts/1/26.jpg" data-lity>
+  <img src="/assets/img/posts/1/26.jpg" style="width:500px" />
+</a>
+<span class="sx-subtitle">친9체 폰트</span>
+</div>
+</div>
+
+약간 [직결식 글꼴](https://ko.wikipedia.org/wiki/%EC%A7%81%EA%B2%B0%EC%8B%9D_%ED%95%9C%EA%B8%80)과 유사한 형태인데, 그래도 이 정도면 위 3가지 폰트 중에서 가독성 면에서는 가장 괜찮고 크기도 그럭저럭 적절한 듯 하다. 어떤 폰트가 더 좋은지는 개인차가 있겠지만 일단 여기까지는 모두 테스트였고 최종 작업물에 어떤 폰트를 사용할지는 아직 결정되지 않았다.
 
 <br>
 
