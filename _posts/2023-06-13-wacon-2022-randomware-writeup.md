@@ -193,8 +193,8 @@ print(get_a([s0, s4, s8], p))
 얻은 $a$ 값으로 Wolframalpha 에 그대로 식을 넣어보면 아래와 같은 결과를 얻을 수 있다.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/5.jpg" data-lity>
-  <img src="/assets/img/posts/3/5.jpg" style="width:600px" />
+<a href="/assets/img/posts/2/5.jpg" data-lity>
+  <img src="/assets/img/posts/2/5.jpg" style="width:600px" />
 </a>
 </div>
 
@@ -243,24 +243,24 @@ s0 = 0x3a82ca5851a6dd7b3eee35341dd57b88
 위에도 첨부한 이미지를 다시 보면 아래와 같다.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/4.jpg" data-lity>
-  <img src="/assets/img/posts/3/4.jpg" style="width:350px" />
+<a href="/assets/img/posts/2/4.jpg" data-lity>
+  <img src="/assets/img/posts/2/4.jpg" style="width:350px" />
 </a>
 </div>
 
 여기서 암호화에 관련된 함수는 sub_404BD0 과 sub_404CC0 이다. 먼저 sub_404BD0 함수를 보자.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/6.jpg" data-lity>
-  <img src="/assets/img/posts/3/6.jpg" style="width:400px" />
+<a href="/assets/img/posts/2/6.jpg" data-lity>
+  <img src="/assets/img/posts/2/6.jpg" style="width:400px" />
 </a>
 </div>
 
 위를 보면 시그니처 값으로 보이는 0xB7E15163 과 0x61C88647 등의 값들이 있다. 이 값을 구글링해보면 아래와 같은 결과를 볼 수 있다.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/7.jpg" data-lity>
-  <img src="/assets/img/posts/3/7.jpg" style="width:800px" />
+<a href="/assets/img/posts/2/7.jpg" data-lity>
+  <img src="/assets/img/posts/2/7.jpg" style="width:800px" />
 </a>
 </div>
 
@@ -369,8 +369,8 @@ int main()
 이제 RC6 함수로 암/복호화 테스트를 해보면 정상적으로 문제 바이너리에서와 동일한 결과를 얻을 수 있다. 다시 암호화 루틴으로 돌아가보자.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/8.jpg" data-lity>
-  <img src="/assets/img/posts/3/8.jpg" style="width:350px" />
+<a href="/assets/img/posts/2/8.jpg" data-lity>
+  <img src="/assets/img/posts/2/8.jpg" style="width:350px" />
 </a>
 </div>
 
@@ -379,8 +379,8 @@ int main()
 그리고 이제 다음을 보면 아래와 같은 복잡한 루틴이 있다.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/9.jpg" data-lity>
-  <img src="/assets/img/posts/3/9.jpg" style="width:600px" />
+<a href="/assets/img/posts/2/9.jpg" data-lity>
+  <img src="/assets/img/posts/2/9.jpg" style="width:600px" />
 </a>
 </div>
 
@@ -542,7 +542,7 @@ int main()
 마지막인 TOP_SECRET.pdf.xxx 를 복호화해서 열어보면 아래와 같은 페이지를 볼 수 있다. 드래그해서 복사하면 정상적으로 플래그를 얻을 수 있다.
 
 <div markdown=1 class="sx-center">
-<a href="/assets/img/posts/3/10.jpg" data-lity>
-  <img src="/assets/img/posts/3/10.jpg" style="width:600px" />
+<a href="/assets/img/posts/2/10.jpg" data-lity>
+  <img src="/assets/img/posts/2/10.jpg" style="width:600px" />
 </a>
 </div>
