@@ -50,8 +50,8 @@
     --c-headerImageFilter: none;
     --c-menuLinks: var(--c-themePrimaryDark);
     --c-menuDepth0: var(--c-themeSecondaryLight);
-    --c-menuItemsFilter: brightness(0);
-    --c-menuItemsFilterHover: none;
+    --c-menuItemsFilter: none;
+    --c-menuItemsFilterHover: brightness(0);
     --c-menuShadow: rgba(0,0,0,0.5);
 
     --c-snippetBackgroundExternal: rgba(239, 239, 239, 0.425);

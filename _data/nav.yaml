@@ -6,3 +6,7 @@
   url: category/hangul.html
   icon: assets/img/icons/hangul.svg
   hue: "var(--c-themeHueGreen)"
+- title: CTF
+  url: category/ctf.html
+  icon: assets/img/icons/ctf.svg
+  hue: "var(--c-themeHueRed)"

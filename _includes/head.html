@@ -10,20 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta property="og:site_name" content="{{ site.title }}" />
-<meta 
-    property="og:title"
-    content="
-        {% if page.title != nil %}
-            {{page.title | prepend: " :: " | prepend: site.title}}
-        {% else %}
-            {{" :: Home" | prepend: site.title}}
-        {% endif %}
-    " 
-/>
+<meta property="og:title" content="{% if page.title != nil %}{{page.title}}{% else %}{{" :: Home" | prepend: site.title}}{% endif %}" />
 {% if page.og_description != nil %}
     <meta property="og:description" content="{{ page.og_description }}" />
 {% endif %}
-<meta property="og:url" content="{{ site.url }}/{{ page.url }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 {% if page.og_type != nil %}
     <meta property="og:type" content="{{ page.og_type }}" />
 {% else %}
@@ -40,10 +31,4 @@
 {% endif %}
 
 
-<title>
-    {% if page.title != nil %}
-        {{page.title | prepend: " :: " | prepend: site.title}}
-    {% else %}
-        {{" :: Home" | prepend: site.title}}
-    {% endif %}
-</title>
+<title>{% if page.title != nil %}{{page.title | prepend: " :: " | prepend: site.title}}{% else %}{{" :: Home" | prepend: site.title}}{% endif %}</title>

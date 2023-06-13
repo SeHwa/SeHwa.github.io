@@ -90,14 +90,19 @@
     }
 
     &__content{
-
         color: var(--c-postText);
         h1{
             font-size: 1.8rem;
         }
+        table{
+            margin: 1.5rem 0;
+        }
         img{
             border: 1px solid var(--c-imgBorder);
             border-radius: 5px;
+            max-width: 100%;
+        }
+        video{
             max-width: 100%;
         }
         #markdown-toc{
@@ -105,8 +110,11 @@
                 text-decoration-line: none;
             }
         }
-        table{
-            margin: 1.5rem 0;
+        mjx-container {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-width: calc(100vw - 2rem);
+            padding-bottom: 10px;
         }
 
         line-height: 1.6em;
