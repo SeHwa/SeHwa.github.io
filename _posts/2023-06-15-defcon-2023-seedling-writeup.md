@@ -2,7 +2,7 @@
 layout: post
 category: [ctf]
 title:  "Defcon 2023 Seedling 풀이"
-date:   2023-06-15
+date:   2023-06-14
 author: SeHwa
 og_image: assets/img/posts/3/cover.jpg
 ---
@@ -392,7 +392,7 @@ EFLAGS: 0x206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
 
 쉘코드는 19bytes 공간에 맞추기 위해 직접 다시 만들었고 아래와 같다.
 
-```
+```asm
 xor rsi, rsi
 push rcx
 pop rdx
