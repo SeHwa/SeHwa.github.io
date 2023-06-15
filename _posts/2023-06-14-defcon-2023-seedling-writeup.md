@@ -2,7 +2,7 @@
 layout: post
 category: [ctf]
 title:  "Defcon 2023 Seedling 풀이"
-date:   2023-06-15
+date:   2023-06-14
 author: SeHwa
 og_image: assets/img/posts/3/cover.jpg
 ---
