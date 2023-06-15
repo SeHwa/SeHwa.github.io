@@ -33,7 +33,7 @@ og_image: assets/img/posts/3/cover.jpg
 
 |Here we have quite a hidden gem. This large conservatory complex used to be a bustling research facility for flora-computer interface. However after losing funding, the complex fell into disarray.<br><br>After we got a hold of it, we were unable to get the main computing system working again. During the process of exploring the complex, we have located a backup mechanism which allows us to provide a new executable.<br><br>However it seems to reject anything we give it. The only file we managed to find that worked was found in a drive in the head researcher's desk. This binary appears to have no real use, but perhaps you can figure out a way to get something more substantial running...|
 
-위의 링크에서 tar.gz 압축된 파일이 문제에서 주어진 파일이다. 압축 파일 내에는 hashes.txt, signed_binary, verify 의 3개의 파일이 존재한다.
+위의 링크에서 tar.gz 압축된 파일이 문제에서 주어진 파일이다. 압축 파일 내에는 `hashes.txt`, `signed_binary`, `verify` 의 3개의 파일이 존재한다.
 
 대회 당시에는 서버에 접속해야 했지만 지금은 물론 서버는 없고, 원래 서버도 단순히 주어진 verify 바이너리를 key.bin 만 입력으로 주고 실행하는 것이기 때문에 지금은 위의 Github 에서 key.bin 도 제공하고 있으므로 단순히 이를 입력으로 주고 로컬에서 실행하면 동일하다.
 
@@ -59,7 +59,7 @@ Successfully verified binary!
 Hello hackers
 ```
 
-그리고 ./signed_binary 를 실행해보면 아래와 같다.
+그리고 `./signed_binary` 를 실행해보면 아래와 같다.
 
 ```
 Hello hackers
@@ -97,7 +97,7 @@ Hello hackers
 unsigned char *get_salt(unsigned char *str, FILE *fp, char index);
 ```
 
-우선 첫 번째 인자로 문자열을 받아서 우선 결과 문자열의 가장 앞에 복사하고, 이후 위의 hashes.txt 파일에서 ":" 로 구분되는 index:hash 구조에서 index 부분을 가져와서 결과 문자열 뒤에 붙인다. 이는 코드에서 보다시피 딱히 정수값만 받는 게 아니라 단순히 : 가 나올때까지의 모든 문자열을 그대로 받고, 128자 이내라면 어떤 문자열이든 넣을 수 있다.
+우선 첫 번째 인자로 문자열을 받아서 우선 결과 문자열의 가장 앞에 복사하고, 이후 위의 hashes.txt 파일에서 ":" 로 구분되는 `index:hash` 구조에서 index 부분을 가져와서 결과 문자열 뒤에 붙인다. 이는 코드에서 보다시피 딱히 정수값만 받는 게 아니라 단순히 : 가 나올때까지의 모든 문자열을 그대로 받고, 128자 이내라면 어떤 문자열이든 넣을 수 있다.
 
 그리고 3번쨰 인자로 받은 1byte 값을 2글자 hex 로 변환해서 결과 문자열 뒤에 붙인다. 이는 디버거에서 바로 확인할 수 있다. 이 결과 문자열은 get_salt 라는 함수명에서 확인할 수 있다시피 해시 salt 로 사용된다.
 
@@ -109,7 +109,7 @@ unsigned char *get_salt(unsigned char *str, FILE *fp, char index);
 get_salt("elf", fp, 0);
 ```
 
-이렇게 호출하고 현재 파일 포인터는 hashes.txt 파일의 시작이라고 가정하면, index 는 0 이므로 "elf" 에 "0" 이 붙고, 그리고 3번째 인자가 0 이므로 이를 2글자 hex 로 변환하면 00 이 된다. 따라서 최종 결과 문자열은 "elf000" 이 된다.
+이렇게 호출하고 현재 파일 포인터는 hashes.txt 파일의 시작이라고 가정하면, index 는 0 이므로 "elf" 에 "0" 이 붙고, 그리고 3번째 인자가 0 이므로 이를 2글자 hex 로 변환하면 00 이 된다. 따라서 최종 결과 문자열은 `"elf000"` 이 된다.
 
 <br>
 
@@ -135,7 +135,7 @@ fp 는 hashes.txt 파일이고, get_salt 에서 ":" 까지 읽고 난 이후의 
 unsigned char *hash_from_file(FILE *fp, int offset, int size, unsigned char *salt);
 ```
 
-이 함수에서는 여러가지 데이터를 가지고 해시를 계산한다. 사용하는 해시 함수는 SHA256 이고, 따라서 blocksize 는 64bytes 이므로 데이터를 붙이면서 64bytes 가 되면 해당 블록을 해시화하고 다시 계속 진행하며 마지막에 final 로 최종 해시를 얻는다. 과정을 순서대로 하나씩 보면 아래와 같다.
+이 함수에서는 여러가지 데이터를 가지고 해시를 계산한다. 사용하는 해시 함수는 `SHA256` 이고, 따라서 blocksize 는 64bytes 이므로 데이터를 붙이면서 64bytes 가 되면 해당 블록을 해시화하고 다시 계속 진행하며 마지막에 final 로 최종 해시를 얻는다. 과정을 순서대로 하나씩 보면 아래와 같다.
 
 <div markdown=1 class="sx-center">
 <a href="/assets/img/posts/3/2.jpg" data-lity>
@@ -179,7 +179,7 @@ SHA256([salt][key][filedata])
 </a>
 </div>
 
-먼저 "elf000" 이라는 salt 를 붙여서 만드는 해시의 데이터는 signed_binary 의 0x00~0x40 영역인데, 이는 ELF64 헤더 영역이다. 헤더를 읽어서 해시 검증을 하고, 이후 ELF64 헤더가 맞는지 몇 가지 값을 검증하는 등의 절차를 거친다.
+먼저 "elf000" 이라는 salt 를 붙여서 만드는 해시의 데이터는 signed_binary 의 0x00~0x40 영역인데, 이는 `ELF64 header` 영역이다. 헤더를 읽어서 해시 검증을 하고, 이후 ELF64 헤더가 맞는지 몇 가지 값을 검증하는 등의 절차를 거친다.
 
 <div markdown=1 class="sx-center">
 <a href="/assets/img/posts/3/6.jpg" data-lity>
@@ -187,7 +187,7 @@ SHA256([salt][key][filedata])
 </a>
 </div>
 
-그리고 "phdrs100" 이라는 salt 를 붙여서 만드는 해시의 데이터는 이름 그대로 program header table 을 읽는다. 앞에서 읽은 ELF 헤더에서 e_phoff 를 offset 으로 하고 size 는 e_phnum * 56 으로 설정해서 읽는다. 그 외에 ELF 헤더와 마찬가지로 몇 가지 값을 검증한다.
+그리고 "phdrs100" 이라는 salt 를 붙여서 만드는 해시의 데이터는 이름 그대로 `program header table` 을 읽는다. 앞에서 읽은 ELF 헤더에서 e_phoff 를 offset 으로 하고 size 는 e_phnum * 56 으로 설정해서 읽는다. 그 외에 ELF 헤더와 마찬가지로 몇 가지 값을 검증한다.
 
 <div markdown=1 class="sx-center">
 <a href="/assets/img/posts/3/7.jpg" data-lity>
@@ -195,7 +195,7 @@ SHA256([salt][key][filedata])
 </a>
 </div>
 
-다음으로 "shdrs200" 이라는 salt 를 붙여서 만드는 해시의 데이터는 이름 그대로 section header table 을 읽는다. phdrs 와 비슷하게 e_shoff 를 offset 으로 하고 e_shnum * 64 를 size 로 해서 읽는다.
+다음으로 "shdrs200" 이라는 salt 를 붙여서 만드는 해시의 데이터는 이름 그대로 `section header table` 을 읽는다. phdrs 와 비슷하게 e_shoff 를 offset 으로 하고 e_shnum * 64 를 size 로 해서 읽는다.
 
 그리고 마지막 부분에서 fseek 을 호출해서 e_shoff, 즉 section header table 의 시작 부분을 파일 포인터로 설정한다. 
 
@@ -240,7 +240,7 @@ s1910
 ...
 ```
 
-그리고 여기서 한 가지 중요한 점은, get_salt 함수에서 index 를 읽을 때는 ":" 가 나올 때까지 모든 문자를 읽지만 이 salt 를 hash_from_file 에서 복사할때는 strlen(salt) 까지 복사하기 때문에 NULL 문자를 넣으면 get_salt 에서 뒤에 붙이는 2글자 hex 를 없앨 수 있다.
+그리고 여기서 한 가지 중요한 점은, get_salt 함수에서 index 를 읽을 때는 ":" 가 나올 때까지 모든 문자를 읽지만 이 salt 를 hash_from_file 에서 복사할때는 `strlen(salt)` 까지 복사하기 때문에 NULL 문자를 넣으면 get_salt 에서 뒤에 붙이는 2글자 hex 를 없앨 수 있다.
 
 예를 들어 원래 "s300" 의 salt 가 붙는 첫 번째 section 에서, hashes.txt 파일의 3: 부분의 index 를 "180F\0:" 으로 바꾸면 원래 "s180F" 가 붙던 section 의 해시와 [salt][key] 부분까지는 동일한 값으로 해시를 만들게 된다.
 
@@ -262,7 +262,7 @@ Section Headers:
   ...
 ```
 
-2번째 section 인 .interp 으로 예를 들어보면, 이 section 은 offset 이 0x318 이고, size 는 0x1c 이지만 실제로 계산되는 것은 다음 section 의 offset 인 0x338 에서 0x318 을 뺀 0x20 이다. signed_binary 에서 0x318~0x338 영역의 데이터는 아래와 같다.
+2번째 section 인 `.interp` 으로 예를 들어보면, 이 section 은 offset 이 0x318 이고, size 는 0x1c 이지만 실제로 계산되는 것은 다음 section 의 offset 인 0x338 에서 0x318 을 뺀 0x20 이다. signed_binary 에서 0x318~0x338 영역의 데이터는 아래와 같다.
 
 ```
 2F 6C 69 62 36 34 2F 6C 64 2D 6C 69 6E 75 78 2D 78 38 36 2D 36 34 2E 73 6F 2E 32 00 00 00 00 00
@@ -281,7 +281,7 @@ SHA256(["s401"][key]["/lib64/ld-linux-x86-64.so.2\x00\x00\x00\x00\x00"])
 4:2C61CDFD83BCACC3CDEE5DD55C55C79978550599497ABBB3070E099F02B4B3AC
 ```
 
-그리고 동일한 과정으로 .text section 의 해시 데이터를 생각해보면 아래와 같다.
+그리고 동일한 과정으로 `.text` section 의 해시 데이터를 생각해보면 아래와 같다.
 
 ```
 SHA256(["s180F"][key][.text data])
@@ -293,7 +293,7 @@ SHA256(["s180F"][key][.text data])
 18:60961C74A81015470E28F6A77CB6CB3ECDFFB7F623C783381ACCFD49B89C7C73
 ```
 
-앞의 18 을 "401\0" 으로 바꾸면, .text 의 해시를 계산할 때 앞쪽 데이터가 .interp 와 동일한 ["s401"][key] 가 된다. 그리고 .interp 의 데이터인 "/lib64/ld-linux-x86-64.so.2\x00\x00\x00\x00\x00" 를 .text 의 가장 앞에 덮어쓰게 되면 결과적으로 그 부분까지 계산되는 데이터가 .interp 의 해시를 계산할 때의 데이터와 완전히 동일하게 되므로 해당 해시를 기반으로 Hash Length Extension Attack 을 이용하면 .text 에서 덮어쓴 부분부터 section 의 끝부분까지는 원하는 데이터를 쓰고 해시를 새로 계산할 수 있게 된다.
+앞의 18 을 "401\0" 으로 바꾸면, .text 의 해시를 계산할 때 앞쪽 데이터가 .interp 와 동일한 ["s401"][key] 가 된다. 그리고 .interp 의 데이터인 `"/lib64/ld-linux-x86-64.so.2\x00\x00\x00\x00\x00"` 를 .text 의 가장 앞에 덮어쓰게 되면 결과적으로 그 부분까지 계산되는 데이터가 .interp 의 해시를 계산할 때의 데이터와 완전히 동일하게 되므로 해당 해시를 기반으로 Hash Length Extension Attack 을 이용하면 .text 에서 덮어쓴 부분부터 section 의 끝부분까지는 원하는 데이터를 쓰고 해시를 새로 계산할 수 있게 된다.
 
 즉 이를 이용하면 A 라는 section 의 데이터를 B 라는 section 에 덮어쓰고 이후 B section 의 남는 공간에 원하는 데이터를 써도 해시 검증을 통과할 수 있다. 물론 A section 이 B section 보다 size 가 작거나 같아야 할 것이다.
 
@@ -303,8 +303,8 @@ SHA256(["s180F"][key][.text data])
 
 단순히 .text 에 덮어쓰면 해결될 것 같지만, 그렇게 할 수 없는 문제가 몇 가지 있다.
 
-1. signed_binary 의 Entrypoint 가 .text section 의 시작 부분이므로 덮어쓸 데이터가 유효한 x64 명령이 아니라면 에러로 종료된다.
-2. Hash Length Extension Attack 공격을 위해서는 해시의 Final 함수에서 덧붙이는 데이터(datasize 등)까지 덧붙여야 하는데, 이 덧붙여지는 데이터는 거의 절대로 유효한 x64 명령이 될 수 없으므로 덮어쓰는 section 데이터가 nop-like 명령 등 유효한 x64 명령이라고 해도 이로 인해 실행이 불가능하다.
+1. signed_binary 의 Entrypoint 가 .text section 의 시작 부분이므로 덮어쓸 데이터가 유효한 x64 명령이 아니라면 에러가 발생한다.
+2. Hash Length Extension Attack 공격을 위해서는 해시의 Final 함수에서 덧붙이는 데이터(datasize 등)까지 덧붙여야 하는데, 이 덧붙여지는 데이터는 거의 절대로 nop-like 명령이 될 수 없으므로 덮어쓰는 section 데이터가 만약 nop-like 명령이라고 해도 이로 인해 실행이 불가능하다.
 
 이러한 문제로 인해 고민하다가 [Dynamic section](http://osr507doc.sco.com/en/topics/ELF_dynam_section.html) 에 주목했다. 이 section 은 아래와 같은 구조를 가진다.
 
@@ -331,7 +331,7 @@ extern Elf32_Dyn _DYNAMIC[];
 이 section 은 문제를 푸는데에 아주 중요한 3가지 특징을 가지고 있다.
 
 1. 형식에 맞지 않는 값이 들어가도 실행 시 에러가 나지 않고 무시된다.
-2. DT_INIT 타입 항목 수정으로 실행 흐름을 변경할 수 있다.
+2. `DT_INIT` 타입 항목 수정으로 실행 흐름을 변경할 수 있다.
 3. 없애도 실행에는 별 영향이 없는 항목들이 일부 존재한다.
 
 위 signed_binary 의 dynamic section 에서 DT_INIT 항목의 값을 보면 0x1000 이 들어있는데, 이 주소를 확인해보면 아래와 같다.
@@ -365,7 +365,7 @@ EFLAGS: 0x206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
 
 위와 같이 main 실행 전에 __libc_start_main 에서 _init 함수를 호출할 때 0x77 이 더해진 주소를 호출하게 된 것을 확인할 수 있다. 이를 이용하면 일단 실행하려는 쉘코드 등을 어딘가에 쓰기만 하면 그 위치로 점프하게 만들 수 있다.
 
-그러면 우선 dynamic section 에 덮어쓸 적절한 section 을 정해야 한다. 당연히 size 가 작을수록 좋고, 또한 덮어쓸 값이 dynamic table 로 인식될 일이 없는 문자열 데이터 등이 좋다. 가능한 후보는 많겠지만 CTF 당시에는 여러 이유로 size 가 0x50 으로 그리 작지는 않은 .comment section 을 이용했었다. 따라서 이를 기준으로 하도록 한다. 실제로 덮어써보면 아래와 같다.
+그러면 우선 dynamic section 에 덮어쓸 적절한 section 을 정해야 한다. 당연히 size 가 작을수록 좋고, 또한 덮어쓸 값이 dynamic table 로 인식될 일이 없는 문자열 데이터 등이 좋다. 가능한 후보는 많겠지만 CTF 당시에는 여러 이유로 size 가 0x50 으로 그리 작지는 않은 `.comment` section 을 이용했었다. 따라서 이를 기준으로 하도록 한다. 실제로 덮어써보면 아래와 같다.
 
 <div markdown=1 class="sx-center">
 <a href="/assets/img/posts/3/11.jpg" data-lity>
@@ -373,7 +373,7 @@ EFLAGS: 0x206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
 </a>
 </div>
 
-그러면 이 덮어쓴 0x50 이후부터는 원하는 데이터를 쓸 수 있다. 다만 당시에는 size 가 살짝 부족해서 실행에 상관없는 DT_GNU_HASH, DT_DEBUG 항목은 제거했다. 또한 덮어쓴 데이터는 문자열이므로 8bytes 정수값 2개로 이루어지는 dynamic table 의 정상적인 항목으로 인식될 수는 없고, 따라서 실행 시에는 그냥 무시된다.
+그러면 이 덮어쓴 0x50 이후부터는 원하는 데이터를 쓸 수 있다. 다만 당시에는 size 가 살짝 부족해서 실행에 상관없는 `DT_GNU_HASH`, `DT_DEBUG` 항목은 제거했다. 또한 덮어쓴 데이터는 문자열이므로 8bytes 정수값 2개로 이루어지는 dynamic table 의 정상적인 항목으로 인식될 수는 없고, 따라서 실행 시에는 그냥 무시된다.
 
 그리고 이제 DT_INIT 를 어떤 주소로 수정할지를 결정해야한다. 실행 권한이 있으면서 적절한 size 를 가지는 section 에 쉘코드를 쓰고 그 위치로 점프하면 되는데, 일단 .text 는 상술했듯이 덮어쓸 수 없으므로 대신 .plt 를 선택했다.
 
@@ -388,7 +388,7 @@ EFLAGS: 0x206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
      0000000000000030  0000000000000010  AX       0     0     16
 ```
 
-.plt 의 size 는 0x30 으로 그리 크지않다. 그래서 0x8 로 작은 size 를 가지는 .bss section 을 덮어쓰기로 했다. 또한 Hash Length Extension Attack 을 위해 덧붙여지는 데이터까지 고려하면 실질적으로 남는 공간은 19bytes 정도밖에 되지 않는다. 일단 이 정도면 충분히 쉘코드를 넣을 공간은 된다고 판단하고 선택했다.
+.plt 의 size 는 0x30 으로 그리 크지않다. 그래서 0x8 로 작은 size 를 가지는 `.bss` section 을 덮어쓰기로 했다. 또한 Hash Length Extension Attack 을 위해 덧붙여지는 데이터까지 고려하면 실질적으로 남는 공간은 19bytes 정도밖에 되지 않는다. 일단 이 정도면 충분히 쉘코드를 넣을 공간은 된다고 판단하고 선택했다.
 
 쉘코드는 19bytes 공간에 맞추기 위해 직접 다시 만들었고 아래와 같다.
 
@@ -406,13 +406,13 @@ pop rdx
 syscall
 ```
 
-이 쉘코드는 완전히 독립적이지 않고 __libc_start_main 에서 call rcx 로 쉘코드가 호출되기 직전의 레지스터 상태에 의존하며, "/bin/sh" 문자열도 dynamic section 에 넣은 다음 해당 위치를 가리키도록 했다. 물론 이 문자열은 dynamic table 로 인식되지 않으므로 아무 상관이 없다.
+이 쉘코드는 완전히 독립적이지 않고 __libc_start_main 에서 call rcx 로 쉘코드가 호출되기 직전의 레지스터 상태에 의존하며, `"/bin/sh"` 문자열도 dynamic section 에 넣은 다음 해당 위치를 가리키도록 했다. 물론 이 문자열은 dynamic table 로 인식되지 않으므로 아무 상관이 없다.
 
 <br>
 
 ## Exploit
 
-이제 시나리오대로 실제로 수정을 하기 위해 Hash Length Extension Attack 을 해야 하는데, 처음에 테스트를 위해 직접 손으로 하다가 후배가 추천한 hash_extender 를 사용했다.
+이제 시나리오대로 실제로 수정을 하기 위해 Hash Length Extension Attack 을 해야 하는데, 처음에 테스트를 위해 직접 손으로 하다가 후배가 추천한 `hash_extender` 를 사용했다.
 
 <div class="sx-button">
   <a href="https://github.com/iagox86/hash_extender" class="sx-button__content github">
@@ -423,7 +423,7 @@ syscall
 
 이 툴을 이용해서 변조하려는 salt 와 이어붙이려는 데이터를 주고 새로운 해시값 및 덮어쓸 데이터를 얻을 수 있다. 
 
-우선 이를 이용해서 signed_binary 에서 수정된 부분을 .dynamic 부터 보면 아래와 같다.
+우선 이를 이용해서 signed_binary 에서 수정된 부분을 `.dynamic` 부터 보면 아래와 같다.
 
 <div markdown=1 class="sx-center">
 <a href="/assets/img/posts/3/13.jpg" data-lity>
@@ -439,7 +439,7 @@ DT_INIT 가 0x103D 로 변경되었고 제일 뒤에 "/bin/sh\0" 문자열이 �
 </a>
 </div>
 
-.plt 에는 0x103D 부터 쉘코드가 들어가있는 것을 볼 수 있다.
+`.plt` 에는 0x103D 부터 쉘코드가 들어가있는 것을 볼 수 있다.
 
 이렇게 수정하고 나면 signed_binary 를 로컬에서 그냥 실행했을 때도 당연히 쉘이 떠야한다.
 
