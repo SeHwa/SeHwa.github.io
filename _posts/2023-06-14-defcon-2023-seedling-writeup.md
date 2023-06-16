@@ -373,7 +373,7 @@ EFLAGS: 0x206 (carry PARITY adjust zero sign trap INTERRUPT direction overflow)
 </a>
 </div>
 
-그러면 이 덮어쓴 0x50 이후부터는 원하는 데이터를 쓸 수 있다. 다만 당시에는 size 가 살짝 부족해서 실행에 상관없는 `DT_GNU_HASH`, `DT_DEBUG` 항목은 제거했다. 또한 덮어쓴 데이터는 문자열이므로 8bytes 정수값 2개로 이루어지는 dynamic table 의 정상적인 항목으로 인식될 수는 없고, 따라서 실행 시에는 그냥 무시된다.
+그러면 위의 0x50 데이터와 이후 해시 공격에 붙는(원래 SHA256_Final 함수에서 붙는 데이터) 데이터까지만 덮어쓰고 이 이후부터는 원하는 데이터를 쓸 수 있다. 다만 당시에는 size 가 살짝 부족해서 실행에 상관없는 `DT_GNU_HASH`, `DT_DEBUG` 항목은 제거했다. 또한 덮어쓴 데이터는 문자열이므로 8bytes 정수값 2개로 이루어지는 dynamic table 의 정상적인 항목으로 인식될 수는 없고, 따라서 실행 시에는 그냥 무시된다.
 
 그리고 이제 DT_INIT 를 어떤 주소로 수정할지를 결정해야한다. 실행 권한이 있으면서 적절한 size 를 가지는 section 에 쉘코드를 쓰고 그 위치로 점프하면 되는데, 일단 .text 는 상술했듯이 덮어쓸 수 없으므로 대신 .plt 를 선택했다.
 
