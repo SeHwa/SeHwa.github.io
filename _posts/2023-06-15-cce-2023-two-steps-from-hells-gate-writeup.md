@@ -592,3 +592,42 @@ print("cce2023{" + result + "}")
 sat
 cce2023{2757b093fe695771169054898e3e81e7}
 ```
+
+<br>
+
+## Bonus
+
+32개 변수와 32개의 식을 가진 연립일차방정식이라는 것은 즉 유일해가 존재한다면 역행렬을 구하는 것으로도 아주 쉽게 해를 구할 수 있다는 뜻이다. 그래서 [SageMath](https://www.sagemath.org/)를 사용해서 역행렬을 구하고 풀어보면 동일하게 플래그를 얻을 수 있다.
+
+```python
+import struct
+
+u32 = lambda x: struct.unpack("<I", x)[0]
+
+tbl1 = []
+tbl2 = []
+t = open("table", "rb").read()
+for i in range(0, len(t), 4):
+        if i < len(t)//2:
+                tbl1.append(u32(t[i:i+4]))
+        else:
+                tbl2.append(u32(t[i:i+4]))
+
+mat = []
+vec = []
+seed = 0x46411132
+for i in range(32):
+        for j in range(32):
+                seed = (0xdeece66d * seed + 11) & 0x7FFFFFFF
+                mat.append(seed & 0xFFFF)
+        vec.append((tbl1[i]*0x8000) + tbl2[i])
+
+A = matrix(32, 32, mat)
+V = vector(vec)
+FLAG = A.inverse() * V
+
+result = ""
+for i in range(32):
+        result += chr(FLAG[i])
+print("cce2023{" + result + "}")
+```
