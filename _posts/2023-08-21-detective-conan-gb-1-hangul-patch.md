@@ -1,7 +1,7 @@
 ---
 layout: post
 category: [hangul]
-title:  "명탐정 코난 GB 지하 유원지 살인사건 한글패치 배포"
+title:  "[GB] 명탐정 코난 - 지하 유원지 살인사건 한글패치 배포"
 date:   2023-08-21
 author: SeHwa
 og_image: assets/img/posts/6/cover.jpg
@@ -17,7 +17,7 @@ og_image: assets/img/posts/6/cover.jpg
 
 <br>
 
-**명탐정 코난 GB 지하 유원지 살인사건** 한글패치를 배포합니다.
+게임보이로 출시된 **명탐정 코난 - 지하 유원지 살인사건**의 한글패치를 배포합니다.
 
 <br><br>
 
