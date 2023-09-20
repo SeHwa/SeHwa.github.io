@@ -47,6 +47,7 @@ og_image: assets/img/posts/6/cover.jpg
 
 ## 업데이트 내역
 
+|2023-09-20|v1.1 수정|
 |2023-08-21|v1.0 최초 공개|
 
 <br><br>
@@ -54,7 +55,7 @@ og_image: assets/img/posts/6/cover.jpg
 ## 다운로드
 
 <div class="sx-button">
-  <a href="https://github.com/SeHwa/detective-conan-1-gb-hangul-patch/releases/download/v1.0/patch_v1.0.xdelta" class="sx-button__content github">
+  <a href="https://github.com/SeHwa/detective-conan-1-gb-hangul-patch/releases/download/v1.1/patch_v1.1.xdelta" class="sx-button__content github">
     <p>패치 다운로드</p>
   </a>
 </div>
