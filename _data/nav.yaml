@@ -10,3 +10,7 @@
   url: category/ctf.html
   icon: assets/img/icons/ctf.svg
   hue: "var(--c-themeHueRed)"
+- title: 잡담
+  url: category/etc.html
+  icon: assets/img/icons/etc.svg
+  hue: "var(--c-themeHueETC)"

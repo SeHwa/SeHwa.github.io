@@ -28,6 +28,7 @@
     --c-themeHuePurple: #9F00CE;
     --c-themeHueBrown: #230007;
     --c-themeHueMSX: #4666F1;
+    --c-themeHueETC: #8200FF;
 
     --c-themeHueGithub: #101010;
     --c-themeHueGithubText: #EFEFEF;
@@ -179,7 +180,7 @@
         --c-menuLinks: var(--c-themePrimaryLight);
         --c-menuDepth0: var(--c-themeSecondaryLight);
         --c-menuItemsFilter: none;
-        --c-menuItemsFilterHover: brightness(100); 
+        --c-menuItemsFilterHover: grayscale(100) brightness(100);
         --c-menuShadow: rgba(255, 255, 255, 0.2);
 
         --c-articleHeading: var(--c-themePrimaryLight);
