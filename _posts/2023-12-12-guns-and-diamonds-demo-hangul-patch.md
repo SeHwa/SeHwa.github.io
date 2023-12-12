@@ -35,6 +35,7 @@ PSP 로 출시된 **총성과 다이아몬드 교섭 체험판**의 한글패치
 
 ## 업데이트 내역
 
+|2023-12-13|v1.1 번역 교정 (카즈님의 지원) |
 |2023-12-12|v1.0 최초 공개|
 
 <br><br>
@@ -42,7 +43,7 @@ PSP 로 출시된 **총성과 다이아몬드 교섭 체험판**의 한글패치
 ## 다운로드
 
 <div class="sx-button">
-  <a href="https://github.com/SeHwa/guns-and-diamonds-demo-hangul-patch/releases/download/v1.0/Guns.And.Diamonds.Demo_KOR.7z" class="sx-button__content github">
+  <a href="https://github.com/SeHwa/guns-and-diamonds-demo-hangul-patch/releases/download/v1.1/Guns.And.Diamonds.Demo_KOR.7z" class="sx-button__content github">
     <p>체험판 다운로드</p>
   </a>
 </div>
