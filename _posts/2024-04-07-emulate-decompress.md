@@ -233,7 +233,7 @@ def decompress(data):
     decompressed = mu.mem_read(0x5000000, mu.reg_read(UC_MIPS_REG_S5))
     return decompressed
 
-decompress(open("iso_k/S0101.SMX", "rb").read())
+decompress(open("S0101.SMX", "rb").read())
 ```
 
 이제 실행해보면 오류 없이 정상적으로 실행되는 것을 볼 수 있다. 그리고 해제된 데이터를 출력해서 확인해보면 정상적으로 압축 해제된 데이터라는 것을 알 수 있다.
