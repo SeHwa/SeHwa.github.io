@@ -2,7 +2,7 @@
 layout: post
 category: [etc]
 title:  "3D 소프트웨어 렌더러 테스트 (1)"
-date:   2024-04-10
+date:   2024-04-12
 author: SeHwa
 og_image: assets/img/posts/13/cover.jpg
 mathjax: true
