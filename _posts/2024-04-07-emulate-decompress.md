@@ -193,7 +193,7 @@ unicorn.unicorn.UcError: Unhandled CPU exception (UC_ERR_EXCEPTION)
 
 대략 앞의 0x21FE38 부터 시작하는 것으로 하면 충분하다.
 
-그렇게 지정하고 다시 실행해봐도, 또 똑같은 오류가 발생한다. 원인을 추적해보면 이번에는 move 명령 떄문이라는 것을 알 수 있다.
+그렇게 지정하고 다시 실행해봐도, 또 똑같은 오류가 발생한다. 원인을 추적해보면 이번에는 move 명령 때문이라는 것을 알 수 있다.
 
 위에서 말한 것과 같은 이유로, move 명령 역시 32bit 에서의 move 가 있고 64bit 의 move 가 따로 있다. 위 이미지에서 보다시피 IDA 에서는 그냥 move 로 표시하고 있지만, 사실 PCSX2 디버거에서 보면 dmove 로 표시된다. 물론 이 둘은 opcode 부터 다르다.
 
